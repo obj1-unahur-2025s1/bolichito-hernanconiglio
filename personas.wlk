@@ -2,28 +2,26 @@ import objetos.*
 
 
 object rosa {
-    
-    method leGusta(unObjeto) {
-        return unObjeto.peso() <= 2000
-    }
-
+  method leGusta(unaCosa) {
+    return unaCosa.peso() <= 2000
+  }
 }
 
 object estefania {
-    method leGusta(unObjeto) {
-        return unObjeto.color().esFuerte()
-    }
+  method leGusta(unaCosa) {
+    return unaCosa.color().esFuerte()
+  }
 }
 
 object luisa {
-    method leGusta(unObjeto) {
-        return unObjeto.material().esBrillante()
-    }
+  method leGusta(unaCosa) {
+    return unaCosa.material().brilla()
+  }
 }
 
 object juan {
-    method leGusta(unObjeto) {
-        return !unObjeto.color().esFuerte() || 
-        unObjeto.peso().between(1200,1800)
+    method leGusta(unaCosa) {
+        return !unaCosa.color().esFuerte() || 
+        unaCosa.peso().between(1200, 1800)
     }
 }

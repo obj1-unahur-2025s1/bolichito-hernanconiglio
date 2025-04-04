@@ -1,40 +1,59 @@
-import objetos.*
 import personas.*
+import objetos.*
 
 object bolichito {
-  var objetoEnVidriera = remera
-  var objetoEnMostrador = pelota
+  var objetoEnVidriera = pelota
+  var objetoEnMostrador = remera
 
-    method reemplazarObjetos(enVidriera,enMostrador) {
-        objetoEnMostrador = enMostrador
-        objetoEnVidriera = enVidriera
+    method objetoEnMostrador(objetoAPoner) {
+        objetoEnMostrador = objetoAPoner
     }
-  method esBrillante() {
-    return objetoEnMostrador.esBrillante() &&
-    objetoEnVidriera.esBrillante()
-  }
 
-  method esMonocromatico() {
-    return objetoEnMostrador.color() == objetoEnVidriera.color()
-  }
+    method objetoEnVidriera(objetoAPoner) {
+        objetoEnVidriera = objetoAPoner
+    }
 
-  method estaEquilibrado() {
-    return objetoEnMostrador.peso() > objetoEnVidriera.peso()
-  }
+    method esBrillante() {
+        return objetoEnMostrador.material().brilla() &&
+        objetoEnVidriera.material().brilla()
+    }
 
-  method tieneObjetoDeColor(unColor) {
-    return objetoEnMostrador.color() == unColor ||
-    objetoEnVidriera.color() == unColor
-  }
+    method esMonocromatico() {
+        return objetoEnMostrador.color() == objetoEnVidriera.color()
+    }
 
-  method puedeMejorar() {
-    return not self.estaEquilibrado() ||
-    self.esMonocromatico()
-  }
+    method estaEquilibrado() {
+        return objetoEnMostrador.peso() > objetoEnVidriera.peso()
+    }
 
-  method tieneAlgoQueLeGustaA(unaPersona) {
-    return unaPersona.leGusta(objetoEnMostrador) ||
-    unaPersona.leGusta(objetoEnVidriera)
-  }
+    method tieneAlgoDeColor(unColor) {
+        return objetoEnMostrador.color() == unColor ||
+        objetoEnVidriera.color() == unColor
+    }
+
+    method puedeMejorar() {
+        return not self.estaEquilibrado() || 
+        self.esMonocromatico()
+    }
+
+    method puedeOfrecerleAlgoA(unaPersona) {
+        return
+        unaPersona.leGusta(objetoEnMostrador) ||
+        unaPersona.leGusta(objetoEnVidriera)
+    }
+
+    method intercambiarObjetos(){
+        const aux = objetoEnMostrador
+        objetoEnMostrador = objetoEnVidriera
+        objetoEnVidriera = aux
+    }
+
+    method intercambiarPlus() {
+        self.intercambiar(objetoEnVidriera, objetoEnMostrador)
+    }
+
+    method intercambiar(unObjeto,otroObjeto) {
+        objetoEnMostrador = unObjeto
+        objetoEnVidriera = otroObjeto
+    }
 }
-
